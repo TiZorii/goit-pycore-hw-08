@@ -1,8 +1,11 @@
 from record import Record
 from address_book import AddressBook
+from pickle_operations import load_data, save_data
+from datetime import datetime, timedelta
 
 def main():
-    book = AddressBook()
+    book = load_data()
+
     print("Welcome to the assistant bot!")
     while True:
         user_input = input("Enter a command: ")
@@ -10,6 +13,7 @@ def main():
 
         if command in ["close", "exit"]:
             print("Good bye!")
+            save_data(book)
             break
 
         elif command == "hello":
